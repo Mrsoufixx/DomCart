@@ -34,6 +34,24 @@ nav{
          width: 80%;
          display: grid;
          gap: 20px;
-         grid-template-columns: repeat(auto-fit,minmax(300px, 0fr));
+         grid-template-columns: repeat(auto-fit,minmax(220px, 0fr));
          padding: 2em;
+}
+#btn_add{
+  /* background-color: #41403C; */
+  padding: 3em;
+  width: 100%;
+  color: #41403C;
+}
+.hoveraddcart:hover{
+  background-color: #aa210f !important;
+}
+.colorbrun{
+  color: #41403C;
+}
+.brunHover:hover{
+  color: #d08856;
+}
+.bgbrun{
+  background-color: #41403C;
 }
