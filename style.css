@@ -1,0 +1,39 @@
+body{
+          font-family: 'Montserrat';
+          width: 100%;
+          background-color: #41403C;
+          display: flex;
+          justify-content: center;
+          margin: 0;
+          position: relative;
+}
+nav{
+          position: fixed;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          top:0;
+          width: 100%;
+          background-color: #d08856;
+          padding: .5em;
+          z-index: 2;
+          /* opacity: 0.1px; */
+}
+.icon_cart{
+ float: right;
+}
+.logosk{
+  width: 50px;
+}
+
+#cartForm{
+          margin-top: 6em;
+          border-top-left-radius: 1em;
+          border-bottom-right-radius: 1em;
+         background-color: #EDEFEE;
+         width: 80%;
+         display: grid;
+         gap: 20px;
+         grid-template-columns: repeat(auto-fit,minmax(300px, 0fr));
+         padding: 2em;
+}
