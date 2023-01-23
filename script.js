@@ -30,7 +30,9 @@ btnAdd.addEventListener("click",()=>{
              '</button>'+
              '<div class="text-xl text-white font-semibold mt-1">240.00MAD</div>'+
            '</div>'+'</div>'+'</div>'+'</div>'+'</div>'+'</div>'+'</div>'
-           cartForm.appendChild(cardDiv)
+          //  cartForm.appendChild(cardDiv)
+          cartForm.insertBefore(cardDiv,cartForm.firstElementChild)
+
 })
 
 
