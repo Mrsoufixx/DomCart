@@ -35,13 +35,33 @@ let products = [
 ]
 
 var cartForm = document.querySelector("#cartForm");
+cartForm.setAttribute("class","mt-20 w-9/12")
 
-var rowMoul = document.createElement("div")
-cartForm.appendChild(rowMoul);
-rowMoul.setAttribute("class"," flex-row w-full  rounded-br-2xl bg-gray-100 ")
+// head
+let headDiv =document.createElement("div")
+cartForm.appendChild(headDiv)
+
+var imgHead = document.createElement("div")
+imgHead.innerHTML='Image'
+headDiv.appendChild(imgHead)
+
+var titleHead = document.createElement("div")
+
+var priceUnitHead = document.createElement("div")
+
+var numberHead = document.createElement("div")
+
+var priceTotalehead = document.createElement("div")
+
+
+
+
+// var rowMoul = document.createElement("div")
+// cartForm.appendChild(rowMoul);
+// rowMoul.setAttribute("class"," flex-row w-full  rounded-br-2xl bg-gray-100 ")
 
 var row = document.createElement("div")
-rowMoul.appendChild(row);
+cartForm.appendChild(row);
 row.setAttribute("class"," bg-gray-200 p-2 rounded-tl-2xl rounded-br-2xl ")
 
 products.map(productItem =>{

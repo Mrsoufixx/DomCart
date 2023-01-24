@@ -23,7 +23,7 @@ nav{
 }
 
 #cartForm{
-        margin-top: 6em;
+        /* margin-top: 6em;
         border-top-left-radius: 1em;
         border-bottom-right-radius: 1em;
          background-color: #EDEFEE;
@@ -31,7 +31,7 @@ nav{
          display: grid;
          gap: 20px;
          grid-template-columns: repeat(auto-fit,minmax(220px, 0fr));
-         padding: 2em;
+         padding: 2em; */
 }
 #btn_add{
   /* background-color: #41403C; */
