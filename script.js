@@ -33,9 +33,9 @@ let products = [
       qte: 0,
     },
 ]
-
+var sum=0;
 var cartForm = document.querySelector("#cartForm");
-cartForm.setAttribute("class","mt-28 w-9/12")
+cartForm.setAttribute("class","mb-12 mt-28 w-9/12 shadow-2xl")
 
 
 
@@ -50,7 +50,7 @@ row.setAttribute("class"," flex flex-col bg-gray-200 p-2 rounded-tl-2xl rounded-
 // head
 let headDiv =document.createElement("div")
 row.appendChild(headDiv)
-headDiv.setAttribute("class","flex justify-between")
+headDiv.setAttribute("class","flex justify-between mb-8")
 
 var deleteHead = document.createElement("div")
 deleteHead.innerHTML='Image'
@@ -65,19 +65,27 @@ imgHead.setAttribute("class","w-2/12 ")
 var titleHead = document.createElement("div")
 titleHead.innerHTML='Nom Produit'
 headDiv.appendChild(titleHead)
-titleHead.setAttribute("class","w-3/12 ")
+titleHead.setAttribute("class","w-2/12 ")
 
 var priceUnitHead = document.createElement("div")
 priceUnitHead.innerHTML='Prix unitaire'
 headDiv.appendChild(priceUnitHead)
+priceUnitHead.setAttribute("class","w-2/12 ")
 
 var numberHead = document.createElement("div")
 numberHead.innerHTML='Nombre'
 headDiv.appendChild(numberHead)
+numberHead.setAttribute("class","w-1/12 ")
 
 var priceTotalehead = document.createElement("div")
 priceTotalehead.innerHTML='Prix Totale'
 headDiv.appendChild(priceTotalehead)
+priceTotalehead.setAttribute("class","w-2/12 ")
+
+var heartHead = document.createElement("div")
+heartHead.innerHTML=''
+headDiv.appendChild(heartHead)
+heartHead.setAttribute("class","w-1/12 ")
 
 
 products.map(productItem =>{
@@ -130,8 +138,9 @@ countDown.addEventListener("click",()=>{
   qteProduct.innerHTML=--productItem.qte;
   var totale= productItem.price*productItem.qte;
   totalePriceUnitaire.innerHTML=totale;
-  let totalPrice =0 
-  totalPrice += totale;
+  let sum 
+  sum -= totale;
+  totalePrice.innerHTML=parseInt(sum)
 })
 
 let qteProduct = document.createElement("span")
@@ -140,11 +149,16 @@ qteProduct.setAttribute("class","text-lg text-black mx-2 w-4/12")
 
 let countUp = document.createElement("i")
 count.appendChild(countUp)
-countUp.setAttribute("class","fa-solid fa-minus cursor-pointer fa-solid fa-plus mx-2 w-4/12")
+countUp.setAttribute("class","bgcursor-pointer fa-solid fa-plus mx-2 w-4/12")
 countUp.addEventListener("click",()=>{
   qteProduct.innerHTML=++productItem.qte
   let totale= productItem.price*productItem.qte
   totalePriceUnitaire.innerHTML=totale
+  sum += totale;
+  
+  console.log(totale,sum)
+
+  totalePrice.innerHTML=parseInt(sum)
 })
 
 //totale price unitaire
@@ -165,6 +179,7 @@ heart.classList.toggle(["fa-solid"])
 } )
 
 let totalePrice=document.createElement("span")
+row.appendChild(totalePrice).innerHTML=0
 
 
 // const add_product = products.map(a => {
