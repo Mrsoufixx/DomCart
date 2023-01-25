@@ -2,129 +2,160 @@ let products = [
 
     {
       id: 1,
-      name: 'testname2',
-      image: "image.jpeg",
-      price :'300',
+      name: 'SAC A DOS 50L',
+      image: "sac-a-dos.png",
+      price :'999',
       like: 0,
       qte: 0,
     },
     {
       id: 1,
-      name: 'testname2',
-      image: "image.jpeg",
-      price :'250',
+      name: 'VESTE HIVER IMPERMÉABLE',
+      image: "veste-chaude.png",
+      price :'429',
       like: 0,
       qte: 0,
     },
     {
       id: 1,
-      name: 'fdgd',
-      image: "image.jpeg",
-      price :'200',
+      name: 'PANTALON CARGO',
+      image: "pantalon-cargo.png",
+      price :'499',
       like: 0,
       qte: 0,
     },
     {
       id: 1,
-      name: 'testname2',
-      image: "image.jpeg",
-      price :'200',
+      name: 'CHAUSSURE RANDONNEE',
+      image: "chaussures.png",
+      price :'459',
       like: 0,
       qte: 0,
     },
 ]
 
 var cartForm = document.querySelector("#cartForm");
-cartForm.setAttribute("class","mt-20 w-9/12")
+cartForm.setAttribute("class","mt-28 w-9/12")
+
+
+
+// grand card (card shopping)
+
+
+
+var row = document.createElement("div")
+cartForm.appendChild(row);
+row.setAttribute("class"," flex flex-col bg-gray-200 p-2 rounded-tl-2xl rounded-br-2xl p-8")
 
 // head
 let headDiv =document.createElement("div")
-cartForm.appendChild(headDiv)
+row.appendChild(headDiv)
+headDiv.setAttribute("class","flex justify-between")
+
+var deleteHead = document.createElement("div")
+deleteHead.innerHTML='Image'
+headDiv.appendChild(deleteHead).innerHTML=" "
+deleteHead.setAttribute("class","w-1/12 ")
 
 var imgHead = document.createElement("div")
 imgHead.innerHTML='Image'
 headDiv.appendChild(imgHead)
+imgHead.setAttribute("class","w-2/12 ")
 
 var titleHead = document.createElement("div")
+titleHead.innerHTML='Nom Produit'
+headDiv.appendChild(titleHead)
+titleHead.setAttribute("class","w-3/12 ")
 
 var priceUnitHead = document.createElement("div")
+priceUnitHead.innerHTML='Prix unitaire'
+headDiv.appendChild(priceUnitHead)
 
 var numberHead = document.createElement("div")
+numberHead.innerHTML='Nombre'
+headDiv.appendChild(numberHead)
 
 var priceTotalehead = document.createElement("div")
+priceTotalehead.innerHTML='Prix Totale'
+headDiv.appendChild(priceTotalehead)
 
-
-
-
-// var rowMoul = document.createElement("div")
-// cartForm.appendChild(rowMoul);
-// rowMoul.setAttribute("class"," flex-row w-full  rounded-br-2xl bg-gray-100 ")
-
-var row = document.createElement("div")
-cartForm.appendChild(row);
-row.setAttribute("class"," bg-gray-200 p-2 rounded-tl-2xl rounded-br-2xl ")
 
 products.map(productItem =>{
   var product = document.createElement("div")
   row.appendChild(product);
-  product.setAttribute("class"," flex justify-between bg-gray-200 ")
+  product.setAttribute("class"," flex flex-row justify-between bgrow mb-4 p-4 h-40 items-center rounded-tl-2xl rounded-br-2xl")
 
   let deleteIcone = document.createElement("i")
 product.appendChild(deleteIcone)
-deleteIcone.setAttribute("class","fa-regular fa-trash-can cursor-pointer")
+deleteIcone.setAttribute("class","flex self-center justify-self-center fa-regular fa-trash-can fa-lg color2 colorhover3 cursor-pointer w-1/12")
 deleteIcone.addEventListener('click',()=>{
-  product.classList.add("hidden")
+  if(window.confirm("mn nytek !!")){
+    row.removeChild(product)
+  }
+  
 })
 
+let imgProductDiv = document.createElement("div")
+product.appendChild(imgProductDiv)
+imgProductDiv.setAttribute("src",productItem.image)
+imgProductDiv.setAttribute("class","w-2/12 ")
 
 let imgProduct = document.createElement("img")
-product.appendChild(imgProduct)
+imgProductDiv.appendChild(imgProduct)
 imgProduct.setAttribute("src",productItem.image)
+imgProduct.setAttribute("class"," filter hover:drop-shadow-2xl w-36 justify-self-center")
 // imgProduct.classList.add(["grid-cols-2"])
 
 let nameProduct = document.createElement("h1")
 product.appendChild(nameProduct).innerHTML=productItem.name
-nameProduct.setAttribute("class","text-lg text-black mx-2")
+nameProduct.setAttribute("class","text-lg text-black mx-2 w-3/12 justify-self-center")
 
 let priceProduct = document.createElement("h1")
-product.appendChild(priceProduct).innerHTML=productItem.price
-priceProduct.setAttribute("class","text-lg text-black mx-2")
+product.appendChild(priceProduct).innerHTML=productItem.price+'MAD'
+priceProduct.setAttribute("class","text-lg text-black mx-2 w-1/12")
 
+// Count
 let count= document.createElement("div")
 product.appendChild(count)
-count.setAttribute("class","flex flex-row justify-evenly mx-2")
+count.setAttribute("class","flex flex-row justify-evenly items-center mx-2 w-2/12")
 
 
 let countDown = document.createElement("i")
 count.appendChild(countDown)
-countDown.setAttribute("class","fa-solid fa-minus cursor-pointer mx-2")
+countDown.setAttribute("class","fa-solid fa-minus cursor-pointer mx-2 w-4/12")
 countDown.addEventListener("click",()=>{
-  qteProduct.innerHTML=--productItem.qte
-  let totale= productItem.price*productItem.qte
-  totalePrice.innerHTML=totale
+  if (qteProduct.innerHTML<=1) {
+    return 
+  }
+  qteProduct.innerHTML=--productItem.qte;
+  var totale= productItem.price*productItem.qte;
+  totalePriceUnitaire.innerHTML=totale;
+  let totalPrice =0 
+  totalPrice += totale;
 })
 
 let qteProduct = document.createElement("span")
 count.appendChild(qteProduct).innerHTML=productItem.qte
-qteProduct.setAttribute("class","text-lg text-black mx-2")
+qteProduct.setAttribute("class","text-lg text-black mx-2 w-4/12")
 
 let countUp = document.createElement("i")
 count.appendChild(countUp)
-countUp.setAttribute("class","fa-solid fa-minus cursor-pointer fa-solid fa-plus mx-2")
+countUp.setAttribute("class","fa-solid fa-minus cursor-pointer fa-solid fa-plus mx-2 w-4/12")
 countUp.addEventListener("click",()=>{
   qteProduct.innerHTML=++productItem.qte
   let totale= productItem.price*productItem.qte
-  totalePrice.innerHTML=totale
+  totalePriceUnitaire.innerHTML=totale
 })
 
-let totalePrice = document.createElement("span")
-count.appendChild(totalePrice).innerHTML='0'
-totalePrice.setAttribute("class"," mx-2")
+//totale price unitaire
+let totalePriceUnitaire = document.createElement("span")
+product.appendChild(totalePriceUnitaire).innerHTML='0'
+totalePriceUnitaire.setAttribute("class"," mx-2 w-2/12")
 
-
+//heart
 let heart = document.createElement("i")
 product.appendChild(heart)
-heart.setAttribute("class","fa-regular fa-heart cursor-pointer mx-2")
+heart.setAttribute("class","fa-regular fa-heart fa-xl color2 colorhover3 cursor-pointer mx-2 w-1/12 ")
 
 heart.addEventListener("click",()=>{
 heart.classList.toggle(["fa-solid"])
@@ -133,6 +164,7 @@ heart.classList.toggle(["fa-solid"])
 
 } )
 
+let totalePrice=document.createElement("span")
 
 
 // const add_product = products.map(a => {

@@ -22,32 +22,34 @@ nav{
   width: 50px;
 }
 
-#cartForm{
-        /* margin-top: 6em;
-        border-top-left-radius: 1em;
-        border-bottom-right-radius: 1em;
-         background-color: #EDEFEE;
-         width: 80%;
-         display: grid;
-         gap: 20px;
-         grid-template-columns: repeat(auto-fit,minmax(220px, 0fr));
-         padding: 2em; */
-}
+
 #btn_add{
   /* background-color: #41403C; */
   padding: 3em;
   width: 100%;
   color: #41403C;
 }
-.hoveraddcart:hover{
+.bghover3:hover{
   background-color: #aa210f !important;
+}
+.colorhover3:hover{
+  color: #aa210f ;
 }
 .colorbrun{
   color: #41403C;
 }
+.color3{
+  color: #aa210f;
+}
+.color2{
+  color: #d08856;
+}
 .brunHover:hover{
   color: #d08856;
 }
-.bgbrun{
+.bgbrun1{
   background-color: #41403C;
+}
+.bgrow{
+  background-color: #dbdad8;
 }
