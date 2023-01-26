@@ -35,7 +35,7 @@ let products = [
 ]
 var sum=0;
 var cartForm = document.querySelector("#cartForm");
-cartForm.setAttribute("class","mb-12 mt-28 w-9/12 shadow-2xl")
+cartForm.setAttribute("class","mb-12 mt-28 w-9/12 shadow-2xl ")
 
 
 
@@ -45,7 +45,7 @@ cartForm.setAttribute("class","mb-12 mt-28 w-9/12 shadow-2xl")
 
 var row = document.createElement("div")
 cartForm.appendChild(row);
-row.setAttribute("class"," flex flex-col bg-gray-200 p-2 rounded-tl-2xl rounded-br-2xl p-8")
+row.setAttribute("class"," flex flex-col bg-gray-200 p-2 rounded-tl-2xl rounded-br-2xl p-8 colorbrun")
 
 // head
 let headDiv =document.createElement("div")
@@ -95,7 +95,7 @@ products.map(productItem =>{
 
   let deleteIcone = document.createElement("i")
 product.appendChild(deleteIcone)
-deleteIcone.setAttribute("class","flex self-center justify-self-center fa-regular fa-trash-can fa-lg color2 colorhover3 cursor-pointer w-1/12")
+deleteIcone.setAttribute("class","flex fa-regular fa-trash-can fa-lg color2 colorhover3 cursor-pointer w-1/12 colorbrun ")
 deleteIcone.addEventListener('click',()=>{
   if(window.confirm("mn nytek !!")){
     row.removeChild(product)
@@ -137,10 +137,9 @@ countDown.addEventListener("click",()=>{
   }
   qteProduct.innerHTML=--productItem.qte;
   var totale= productItem.price*productItem.qte;
-  totalePriceUnitaire.innerHTML=totale;
-  let sum 
-  sum -= totale;
-  totalePrice.innerHTML=parseInt(sum)
+  totalePriceUnitaire.innerHTML=totale+"MAD";
+  //sum -= totale;
+  totalePrice.innerHTML=getTotal()
 })
 
 let qteProduct = document.createElement("span")
@@ -153,12 +152,9 @@ countUp.setAttribute("class","bgcursor-pointer fa-solid fa-plus mx-2 w-4/12")
 countUp.addEventListener("click",()=>{
   qteProduct.innerHTML=++productItem.qte
   let totale= productItem.price*productItem.qte
-  totalePriceUnitaire.innerHTML=totale
-  sum += totale;
-  
-  console.log(totale,sum)
-
-  totalePrice.innerHTML=parseInt(sum)
+  totalePriceUnitaire.innerHTML=totale+"MAD";
+  //sum += totale;
+  totalePrice.innerHTML=getTotal()
 })
 
 //totale price unitaire
@@ -180,85 +176,9 @@ heart.classList.toggle(["fa-solid"])
 
 let totalePrice=document.createElement("span")
 row.appendChild(totalePrice).innerHTML=0
+totalePrice.setAttribute("class","w-full p-2 text-xl flex justify-center")
 
-
-// const add_product = products.map(a => {
-//   return `
-//   <div
-//         class="">
-//           <div class="max-w-md w-full shadow-lg rounded-tl-2xl rounded-br-2xl ">
-//             <div class="flex flex-col">
-//               <div>
-//                 <div class="relative h-62 w-full mb-3">
-//                   <div class="absolute flex flex-row top-0 right-0 justify-between items-center space-x-2 p-3">
-//                     <div id="count" style="color: #EDEFEE;">0</div>
-//                     <button id="btn-like"
-//                       class="transition ease-in duration-300 bg-gray-100 brunHover shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1"
-//                     >
-//                       <svg
-//                         xmlns="http://www.w3.org/2000/svg"
-//                         class="h-6 w-6"
-//                         fill="none"
-//                         viewBox="0 0 24 24"
-//                         stroke="currentColor"
-//                       >
-//                         <path
-//                           stroke-linecap="round"
-//                           stroke-linejoin="round"
-//                           stroke-width="2"
-//                           d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-//                         />
-//                       </svg>
-//                     </button>
-//                   </div>
-//                   <img
-//                     src="${a.image}"
-//                     alt="Just a flower"
-//                     class="w-full object-fill rounded-2xl"
-//                   />
-//                 </div>
-//                 <div class="flex-auto justify-evenly px-4 pb-4 colorbrun">
-//                   <div class="flex flex-wrap">
-//                     <div
-//                       class="flex items-center w-full justify-between min-w-0"
-//                     >
-//                       <h2
-//                         class="text-md font-extrabold mr-auto cursor-pointer brunHover truncate mb-3"
-//                       >
-//                         ${a.name}
-//                       </h2>
-//                     </div>
-//                   </div>
-
-//                   <div class="flex space-x-2 text-sm font-medium justify-between items-center">
-//                     <button style="background-color: #d08856;color: #EDEFEE;"
-//                       class="transition ease-in duration-300 inline-flex items-center text-sm font-medium mb-2 md:mb-0  px-3 py-2 hover:shadow-xl tracking-wider rounded-tl-md rounded-br-md hoveraddcart"
-//                     >
-//                       <span>Add Cart</span>
-//                     </button>
-//                     <div class="text-sm colorBrun font-semibold mt-1 colorbrun pr-1">
-//                       ${a.price}
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//       </div>
-//       <div
-//           class="relative"
-//         >
-//           <div class="container">
-//             <div class="max-w-md w-full overflow-hidden shadow-lg rounded-xl" >
-//               <button id="btn_add">
-//                 <i class="fa-solid fa-plus fa-2xl"></i>
-//               </button>
-              
-//           </div>
-//         </div>
-//       </div>
-//   `
-// }).join('') 
+const getTotal = ()=>products.reduce((sum,product)=>sum+=product.price*product.qte,0)
 
 
 
@@ -273,9 +193,6 @@ row.appendChild(totalePrice).innerHTML=0
 //   num++;
 //   count.innerHTML = num;
 // });
-
-
-
 
 
 
